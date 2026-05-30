@@ -6,4 +6,3 @@ check_disk() {
         && log "WARN " "[DISK] ${DISK}% > threshold" \
         || log "INFO " "[DISK] ${DISK}% OK"
 }
-# TODO: add network check
