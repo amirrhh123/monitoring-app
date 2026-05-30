@@ -6,10 +6,13 @@
 
 # ── بارگذاری تنظیمات (اپیزود ۳: کار با فایل‌ها) ──
 CONFIG_FILE="$(dirname "$0")/../config/settings.conf"
+server_monitor="$(dirname "$0")/server-monitor.sh"
 if [ ! -f "$CONFIG_FILE" ]; then
     echo "ERROR: config not found: $CONFIG_FILE"; exit 1
 fi
 source "$CONFIG_FILE"
+source "$server_monitor"
+
 
 LOG_FILE="$(dirname "$0")/../logs/app.log"
 ARCHIVE_DIR="$(dirname "$0")/../logs/archive"
@@ -72,4 +75,5 @@ check_services
 check_resources
 check_endpoints
 rotate_logs
+check_disk
 log "INFO " "════ Monitor Done ════"
